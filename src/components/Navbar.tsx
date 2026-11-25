@@ -7,6 +7,7 @@ const links = [
   { to: "/search", label: "Search" },
   { to: "/playlist", label: "Playlist" },
   { to: "/download", label: "Download" },
+  { to: "/login", label: "Log in" },
 ] as const;
 
 export default function Navbar() {

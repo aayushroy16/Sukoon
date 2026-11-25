@@ -70,7 +70,12 @@
   --sk-glass-strong: oklch(1 0 0 / 0.86);
   --sk-glass-border: oklch(1 0 0 / 0.6);
 
-  --gradient-hero: linear-gradient(135deg, oklch(0.95 0.05 200), oklch(0.97 0.04 90) 45%, oklch(0.94 0.06 30));
+  --gradient-hero: linear-gradient(
+    135deg,
+    oklch(0.95 0.05 200),
+    oklch(0.97 0.04 90) 45%,
+    oklch(0.94 0.06 30)
+  );
   --gradient-brand: linear-gradient(120deg, oklch(0.62 0.13 195), oklch(0.72 0.15 155));
   --gradient-warm: linear-gradient(120deg, oklch(0.78 0.15 40), oklch(0.72 0.17 15));
   --gradient-bus: linear-gradient(140deg, oklch(0.93 0.06 220), oklch(0.96 0.06 95));
@@ -188,6 +193,192 @@
   max-width: 60ch;
 }
 
+.sk-auth-section {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 440px);
+  align-items: center;
+  gap: clamp(2rem, 7vw, 7rem);
+  min-height: calc(100vh - 218px);
+  padding: var(--space-5) 0;
+}
+
+.sk-auth-copy {
+  max-width: 600px;
+}
+
+@media (max-width: 760px) {
+  .sk-auth-section {
+    grid-template-columns: minmax(0, 1fr);
+    min-height: 0;
+  }
+}
+
+.sk-auth-form {
+  display: grid;
+  gap: 1.1rem;
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+.sk-auth-fields {
+  display: grid;
+  gap: 1.1rem;
+}
+
+.sk-auth-tabs,
+.sk-auth-switch,
+.sk-admin-heading,
+.sk-admin-pagination {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.sk-auth-switch {
+  border-bottom: 1px solid var(--border);
+}
+
+.sk-auth-switch button {
+  border: 0;
+  border-bottom: 2px solid transparent;
+  padding: 0.55rem 0.8rem;
+  background: transparent;
+  color: var(--muted-foreground);
+  font: inherit;
+  cursor: pointer;
+}
+
+.sk-auth-switch button.is-selected {
+  border-color: var(--primary);
+  color: var(--foreground);
+  font-weight: 700;
+}
+
+.sk-auth-success {
+  margin: 0;
+  color: oklch(0.48 0.12 155);
+  font-size: 0.9rem;
+}
+
+.sk-admin-heading {
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+
+.sk-admin-users {
+  display: grid;
+  gap: 0.6rem;
+  max-height: 340px;
+  overflow: auto;
+}
+
+.sk-admin-user {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--card);
+}
+
+.sk-admin-user-meta {
+  display: grid;
+  min-width: 0;
+  gap: 0.15rem;
+  overflow-wrap: anywhere;
+}
+
+.sk-admin-user-meta .sk-muted {
+  font-size: 0.78rem;
+}
+
+.sk-admin-pagination {
+  justify-content: space-between;
+  margin-top: 0.75rem;
+}
+
+.sk-auth-heading {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+.sk-auth-heading .sk-h2 {
+  font-size: 1.8rem;
+}
+
+.sk-auth-icon {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  color: var(--primary);
+  background: var(--secondary);
+}
+
+.sk-field {
+  display: grid;
+  gap: 0.45rem;
+  color: var(--foreground);
+  font-family: var(--font-display);
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+
+.sk-input-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  border: 1px solid var(--input);
+  border-radius: 12px;
+  padding: 0 0.85rem;
+  color: var(--muted-foreground);
+  background: var(--background);
+}
+
+.sk-input-wrap:focus-within {
+  border-color: var(--ring);
+  box-shadow: 0 0 0 3px oklch(0.62 0.13 195 / 0.16);
+}
+
+.sk-input-wrap .sk-input {
+  border: 0;
+  padding: 0.78rem 0;
+  outline: 0;
+}
+
+.sk-auth-submit {
+  width: 100%;
+  margin-top: 0.35rem;
+}
+
+.sk-auth-error {
+  margin: 0;
+  color: var(--destructive);
+  font-size: 0.9rem;
+}
+
+.sk-auth-note,
+.sk-auth-demo {
+  margin: 0;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.sk-auth-note a {
+  color: var(--primary);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.sk-auth-demo {
+  color: var(--muted-foreground);
+  font-size: 0.78rem;
+}
+
 .sk-muted {
   color: var(--muted-foreground);
   font-size: 0.94rem;
@@ -213,7 +404,11 @@
   font-size: 0.95rem;
   font-weight: 700;
   cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, color 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease,
+    color 0.2s ease;
   text-decoration: none;
   line-height: 1;
 }
@@ -337,7 +532,9 @@
   color: var(--sk-ink-soft);
   font-weight: 600;
   font-size: 0.95rem;
-  transition: background 0.2s ease, color 0.2s ease;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
 }
 
 .sk-nav-link:hover,
@@ -463,7 +660,9 @@
   color: var(--foreground);
   box-shadow: var(--shadow-card);
   border: 1px solid var(--sk-glass-border);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .sk-vibe-card:hover {
@@ -494,7 +693,12 @@
   justify-content: flex-end;
   gap: 0.5rem;
   padding: var(--space-2);
-  background: linear-gradient(180deg, oklch(1 0 0 / 0.05) 20%, oklch(1 0 0 / 0.82) 62%, oklch(1 0 0 / 0.95));
+  background: linear-gradient(
+    180deg,
+    oklch(1 0 0 / 0.05) 20%,
+    oklch(1 0 0 / 0.82) 62%,
+    oklch(1 0 0 / 0.95)
+  );
 }
 
 .sk-vibe-emoji {
@@ -553,7 +757,10 @@
   font-weight: 600;
   font-size: 0.92rem;
   cursor: pointer;
-  transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease;
 }
 
 .sk-mood-chip:hover {
@@ -639,7 +846,9 @@
   border-radius: 20px;
   padding: 0.75rem;
   box-shadow: var(--shadow-soft);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .sk-song:hover {

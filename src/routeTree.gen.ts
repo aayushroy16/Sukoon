@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as BusRouteImport } from './routes/bus'
 import { Route as DanceRouteImport } from './routes/dance'
 import { Route as DownloadRouteImport } from './routes/download'
+import { Route as LoginRouteImport } from './routes/login'
 import { Route as LoveRouteImport } from './routes/love'
 import { Route as PlaylistRouteImport } from './routes/playlist'
 import { Route as SalonRouteImport } from './routes/salon'
@@ -36,6 +37,11 @@ const DanceRoute = DanceRouteImport.update({
 const DownloadRoute = DownloadRouteImport.update({
   id: '/download',
   path: '/download',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LoveRoute = LoveRouteImport.update({
@@ -64,6 +70,7 @@ export interface FileRoutesByFullPath {
   '/bus': typeof BusRoute
   '/dance': typeof DanceRoute
   '/download': typeof DownloadRoute
+  '/login': typeof LoginRoute
   '/love': typeof LoveRoute
   '/playlist': typeof PlaylistRoute
   '/salon': typeof SalonRoute
@@ -74,6 +81,7 @@ export interface FileRoutesByTo {
   '/bus': typeof BusRoute
   '/dance': typeof DanceRoute
   '/download': typeof DownloadRoute
+  '/login': typeof LoginRoute
   '/love': typeof LoveRoute
   '/playlist': typeof PlaylistRoute
   '/salon': typeof SalonRoute
@@ -85,6 +93,7 @@ export interface FileRoutesById {
   '/bus': typeof BusRoute
   '/dance': typeof DanceRoute
   '/download': typeof DownloadRoute
+  '/login': typeof LoginRoute
   '/love': typeof LoveRoute
   '/playlist': typeof PlaylistRoute
   '/salon': typeof SalonRoute
@@ -97,6 +106,7 @@ export interface FileRouteTypes {
     | '/bus'
     | '/dance'
     | '/download'
+    | '/login'
     | '/love'
     | '/playlist'
     | '/salon'
@@ -107,6 +117,7 @@ export interface FileRouteTypes {
     | '/bus'
     | '/dance'
     | '/download'
+    | '/login'
     | '/love'
     | '/playlist'
     | '/salon'
@@ -117,6 +128,7 @@ export interface FileRouteTypes {
     | '/bus'
     | '/dance'
     | '/download'
+    | '/login'
     | '/love'
     | '/playlist'
     | '/salon'
@@ -128,6 +140,7 @@ export interface RootRouteChildren {
   BusRoute: typeof BusRoute
   DanceRoute: typeof DanceRoute
   DownloadRoute: typeof DownloadRoute
+  LoginRoute: typeof LoginRoute
   LoveRoute: typeof LoveRoute
   PlaylistRoute: typeof PlaylistRoute
   SalonRoute: typeof SalonRoute
@@ -162,6 +175,13 @@ declare module '@tanstack/react-router' {
       path: '/download'
       fullPath: '/download'
       preLoaderRoute: typeof DownloadRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/love': {
@@ -200,6 +220,7 @@ const rootRouteChildren: RootRouteChildren = {
   BusRoute: BusRoute,
   DanceRoute: DanceRoute,
   DownloadRoute: DownloadRoute,
+  LoginRoute: LoginRoute,
   LoveRoute: LoveRoute,
   PlaylistRoute: PlaylistRoute,
   SalonRoute: SalonRoute,
